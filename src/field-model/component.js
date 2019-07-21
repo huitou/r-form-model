@@ -52,7 +52,7 @@ class FieldModel extends Component {
         this.setState({ activated: false });
     };
 
-    validator = (value, context) => {
+    validate = (value, context) => {
         this.props.validator(value, context);
     };
     change = (nextValue) => {
