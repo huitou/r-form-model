@@ -1,21 +1,9 @@
 import React, { Component } from 'react';
-import { any, func } from 'prop-types';
+import { string, any, func } from 'prop-types';
 
 class FieldModel extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: props.hset.name,
-            initial: props.initial,
-            value: props.initial,
-            error: undefined,
-            focused: false,
-            enabled: true,
-            activated: true
-        };
-    }
-
     static propTypes = {
+        id: string.isRequired,
         initial: any,
         validator: func
     };
@@ -24,6 +12,19 @@ class FieldModel extends Component {
         initial: undefined,
         validator: () => {}
     };
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: props.id,
+            initial: props.initial,
+            value: props.initial,
+            error: undefined,
+            focused: false,
+            enabled: true,
+            activated: true
+        };
+    }
 
     value = () => this.state.value;
     error = () => this.state.error;
@@ -53,10 +54,13 @@ class FieldModel extends Component {
     };
 
     validate = (value, context) => {
-        this.props.validator(value, context);
+        this.setState({ error: this.props.validator(value, context) });
     };
     change = (nextValue) => {
         this.setState({ value: nextValue });
+    };
+    reset = () => {
+        this.setState({ value: this.state.initial });
     };
 
     render() {

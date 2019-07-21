@@ -12,6 +12,7 @@ export default class FieldCollector extends Collector {
             },
             hefu: {
                 change: 'change',
+                reset: 'reset',
                 validate: 'validate',
                 focus: 'focus',
                 blur: 'blur',

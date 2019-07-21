@@ -24,9 +24,9 @@ class HashModel extends Component {
         const { initialValues, ...rest } = this.props;
         return (
             <Fragment>
-                <CollectedFieldModel hset={this.hset('f1')} initial={initialValues.f1} />
-                <CollectedFieldModel hset={this.hset('f2')} initial={initialValues.f2} />
-                <CollectedFieldModel hset={this.hset('f3')} initial={initialValues.f3} />
+                <CollectedFieldModel hset={this.hset('f1')} id={'f1'} initial={initialValues.f1} />
+                <CollectedFieldModel hset={this.hset('f2')} id={'f2'} initial={initialValues.f2} />
+                <CollectedFieldModel hset={this.hset('f3')} id={'f3'} initial={initialValues.f3} />
             </Fragment>
         );
     }
