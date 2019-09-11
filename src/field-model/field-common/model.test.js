@@ -1,11 +1,14 @@
 /*
-	FieldCommon artefacts.
+	FieldCommonModel test.
 
 	Copyright (C) 2019 Riverside Software Engineering Ltd. All rights reserved.
 
 	Licensed under the MIT License. See LICENSE file in the project root for full license information.
 */
-import FieldCommonComponent from './component';
 import FieldCommonModel from './model';
 
-export { FieldCommonModel as default, FieldCommonComponent };
+describe('FieldCommonModel', () => {
+    it('is a function', () => {
+        expect(typeof FieldCommonModel).toBe('function');
+    });
+});

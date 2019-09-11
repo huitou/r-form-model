@@ -1,5 +1,5 @@
 /*
-	FieldBasicCollector test.
+	FieldCommonCollector test.
 
 	Copyright (C) 2019 Riverside Software Engineering Ltd. All rights reserved.
 
@@ -8,8 +8,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import FieldBasicCollector from './collector';
-import FieldBasicComponent from './component';
+import FieldCommonCollector from './collector';
+import FieldCommonComponent from './component';
 
 const handleMap = {
     hfu: {
@@ -18,13 +18,21 @@ const handleMap = {
             name: 'getName',
             initial: 'getInitial',
             enabled: 'enabled',
+            activated: "activated",
+            focused: "focused",
             value: 'getValue',
+            error: "error",
         },
         hefu: {
             enable: 'enable',
             disable: 'disable',
+            activate: "activate",
+            deactivate: "deactivate",
+            focus: "focus",
+            blur: "blur",
             change: 'setValue',
             reset: 'resetValue',
+            validate: "validate",
         },
     },
 };
@@ -32,26 +40,26 @@ const handleMap = {
 const id = 'testId';
 const name = 'testName';
 
-describe('FieldBasicCollector', () => {
+describe('FieldCommonCollector', () => {
     it('has a proper handle map', () => {
-        expect(FieldBasicCollector.handleMap).toEqual(handleMap);
+        expect(FieldCommonCollector.handleMap).toEqual(handleMap);
     });
 });
 
-describe('FieldBasicCollector', () => {
+describe('FieldCommonCollector', () => {
     let wrapper;
     beforeEach(() => {
-        wrapper = shallow(<FieldBasicComponent id={id} name={name} />);
+        wrapper = shallow(<FieldCommonComponent id={id} name={name} />);
     });
 
-    it('matches all hifu instance methods of FieldBasicComponent', () => {
-        Object.values(FieldBasicCollector.handleMap.hfu.hifu).forEach(
+    it('matches all hifu instance methods of FieldCommonComponent', () => {
+        Object.values(FieldCommonCollector.handleMap.hfu.hifu).forEach(
             method => expect(wrapper.instance()[method]).toBeDefined()
         );
     });
 
-    it('matches all hefu instance methods of FieldBasicComponent', () => {
-        Object.values(FieldBasicCollector.handleMap.hfu.hefu).forEach(
+    it('matches all hefu instance methods of FieldCommonComponent', () => {
+        Object.values(FieldCommonCollector.handleMap.hfu.hefu).forEach(
             method => expect(wrapper.instance()[method]).toBeDefined()
         );
     });
