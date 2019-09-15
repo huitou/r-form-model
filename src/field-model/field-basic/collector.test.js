@@ -29,8 +29,12 @@ const handleMap = {
     },
 };
 
-const id = 'testId';
-const name = 'testName';
+const props = {
+    id: 'testId',
+    name: 'testName',
+    getValue: jest.fn(),
+    setValue: jest.fn(),
+};
 
 describe('FieldBasicCollector', () => {
     it('has a proper handle map', () => {
@@ -41,7 +45,7 @@ describe('FieldBasicCollector', () => {
 describe('FieldBasicCollector', () => {
     let wrapper;
     beforeEach(() => {
-        wrapper = shallow(<FieldBasicComponent id={id} name={name} />);
+        wrapper = shallow(<FieldBasicComponent {...props} />);
     });
 
     it('matches all hifu instance methods of FieldBasicComponent', () => {

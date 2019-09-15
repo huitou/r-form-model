@@ -10,10 +10,14 @@ import { shallow } from 'enzyme';
 
 import FieldCommonComponent from './component';
 
+let value;
+
 const props = {
     id: 'testId',
     name: 'testName',
     initial: 'whatever',
+    getValue: () => value,
+    setValue: (nextValue) => value = nextValue,
     validate: jest.fn(),
 };
 
@@ -28,6 +32,7 @@ const initialState = {
 describe('FieldCommonComponent', () => {
     let wrapper;
     beforeEach(() => {
+        value = props.initial;
         wrapper = shallow(<FieldCommonComponent {...props} />);
     });
 

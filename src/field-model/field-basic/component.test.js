@@ -10,25 +10,29 @@ import { shallow } from 'enzyme';
 
 import FieldBasicComponent from './component';
 
+let value;
+
 const props = {
     id: 'testId',
     name: 'testName',
     initial: 'whatever',
+    getValue: () => value,
+    setValue: (nextValue) => value = nextValue,
 };
 
 const initialState = {
     enabled: true,
-    value: undefined,
 };
 
 describe('FieldBasicComponent', () => {
     let wrapper;
     beforeEach(() => {
+        value = props.initial;
         wrapper = shallow(<FieldBasicComponent {...props} />);
     });
 
     it('when mounted, has initial state', () => {
-        expect(wrapper.state()).toEqual({ ...initialState, value: props.initial });
+        expect(wrapper.state()).toEqual({ ...initialState });
     });
 
     it('when mounted, can getId', () => {
